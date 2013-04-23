@@ -189,7 +189,8 @@
       placeholderColor:'#666666',
       autosize: true,
       comfortZone: 20,
-      inputPadding: 6*2
+      inputPadding: 6*2,
+      extraAttrs: {}
     },options);
 
 		this.each(function() { 
@@ -239,6 +240,10 @@
 				$(data.fake_input).val($(data.fake_input).attr('data-default'));
 				$(data.fake_input).css('color',settings.placeholderColor);
 		        $(data.fake_input).resetAutosize(settings);
+		        
+		        $.each(settings.extraAttrs, function(key, val) {
+					$(data.fake_input).attr(key, val);
+				});
 		
 				$(data.holder).bind('click',data,function(event) {
 					$(event.data.fake_input).focus();
